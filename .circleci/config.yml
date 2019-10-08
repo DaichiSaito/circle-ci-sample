@@ -52,12 +52,13 @@ jobs:
       - run:
           name: clone repository of rspec
           command: |
-            mkdir /rspec-repository
-            cd /rspec-repository
+            mkdir /tmp/rspec-repository
+            cd /tmp/rspec-repository
             git clone https://github.com/DaichiSaito/circle-ci-sample.git
+            cd /tmp/rspec-repository/circle-ci-sample
             git checkout feature/add-spec
-            rm -rf /DaichiSaito/circle-ci-sample/spec
-            mv /rspec-repository/circle-ci-sample/spec /DaichiSaito/circle-ci-sample/spec
+            rm -rf ~/DaichiSaito/circle-ci-sample/spec
+            mv /tmp/rspec-repository/circle-ci-sample/spec ~/DaichiSaito/circle-ci-sample/spec
 
       # run tests!
       - run:
@@ -67,7 +68,7 @@ jobs:
             TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | \
               circleci tests split --split-by=timings)"
 
-            cd /DaichiSaito/circle-ci-sample
+            cd ~/DaichiSaito/circle-ci-sample
             bundle exec rspec \
               --format progress \
               --format RspecJunitFormatter \
