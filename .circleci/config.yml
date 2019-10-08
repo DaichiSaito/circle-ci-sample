@@ -73,6 +73,8 @@ jobs:
               --format progress \
               --format RspecJunitFormatter \
               --out /tmp/test-results/rspec.xml \
+              --format html \
+              --out /tmp/test-results/rspec.html \
               --format progress \
               $TEST_FILES
 
