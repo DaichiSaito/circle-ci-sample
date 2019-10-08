@@ -49,6 +49,16 @@ jobs:
       - run: bundle exec rake db:create
       - run: bundle exec rake db:schema:load
 
+      - run:
+          name: clone repository of rspec
+          command: |
+            mkdir /rspec-repository
+            cd /rspec-repository
+            git clone https://github.com/DaichiSaito/circle-ci-sample.git
+            git checkout feature/add-spec
+            rm -rf /DaichiSaito/circle-ci-sample/spec
+            mv /rspec-repository/circle-ci-sample/spec /DaichiSaito/circle-ci-sample/spec
+
       # run tests!
       - run:
           name: run tests
@@ -57,6 +67,7 @@ jobs:
             TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | \
               circleci tests split --split-by=timings)"
 
+            cd /DaichiSaito/circle-ci-sample
             bundle exec rspec \
               --format progress \
               --format RspecJunitFormatter \
