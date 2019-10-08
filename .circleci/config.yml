@@ -13,10 +13,10 @@ jobs:
           DB_HOST: 127.0.0.1
           RAILS_ENV: test
       - image: circleci/mysql:5.7
-          environment:
-            TZ: /usr/share/zoneinfo/Asia/Tokyo
-            MYSQL_USER: root
-            MYSQL_ALLOW_EMPTY_PASSWORD: yes
+        environment:
+          TZ: /usr/share/zoneinfo/Asia/Tokyo
+          MYSQL_USER: root
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
 
     working_directory: ~/DaichiSaito/circle-ci-sample
 
