@@ -56,7 +56,7 @@ jobs:
             cd /tmp/rspec-repository
             git clone https://github.com/DaichiSaito/circle-ci-sample.git
             cd /tmp/rspec-repository/circle-ci-sample
-            git checkout feature/add-spec
+            git checkout feature/addadd-spec
             rm -rf ~/DaichiSaito/circle-ci-sample/spec
             mv /tmp/rspec-repository/circle-ci-sample/spec ~/DaichiSaito/circle-ci-sample/spec
 
