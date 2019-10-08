@@ -13,5 +13,11 @@ RSpec.describe Task, type: :model do
       task.valid?
       expect(task.errors[:content]).to include("can't be blank")
     end
+
+    it 'titleは100文字以内であること' do
+      task = Task.new(title: "a" * 101)
+      task.valid?
+      expect(task.errors[:title]).to include("is too long (maximum is 100 characters)")
+    end
   end
 end
